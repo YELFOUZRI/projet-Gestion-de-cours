@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Create Course</title>
+
+
+</head>
+
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="card container d-flex justify-content-center">
+
+			<div class="card-body">
+				<h5 class="card-title mb-5">Ajouter des cours</h5>
+
+				<form th:action="@{saveC}" method="post">
+
+
+					<div class="row g-3 mb-5">
+						<div class="col-1">
+							<input type="text" class="form-control" placeholder="Titre"
+								aria-label="title" name="title" th:value="${course.title}">
+							<span class="text-danger" th:errors="${course.title}"></span>
+						</div>
+						<div class="col-7">
+							<input type="text" class="form-control" placeholder="Déscription"
+								aria-label="description" name="description"
+								th:value="${course.description}"> <span
+								class="text-danger" th:errors="${course.description}"></span>
+						</div>
+						<div class="col-1">
+							<input type="text" class="form-control" placeholder="Durée"
+								aria-label="duration" name="duration"
+								th:value="${course.duration}"> <span class="text-danger"
+								th:errors="${course.duration}"></span>
+
+						</div>
+						<div class="row g-3 mb-5">
+						<!-- 
+					
+ 				-->		<label>N° de salle:</label>
+						<select class="form-control col" name="classRoom">
+							<option th:each="classRoom : ${classRooms}"
+								th:value="${classRoom.id}" th:text="${classRoom.number}">
+							</option>
+						</select>
+						<label>Nom instructeur:</label>
+						
+						<select class="form-control col" name="instructor">						
+							<option th:each="instructor : ${instructor}"
+								th:value="${instructor.id}" th:text="${instructor.firstName}">
+							</option>
+						</select>
+						
+						</div>
+				<!--	
+					
+-->
+					</div>
+
+					<button type="submit" class="btn btn-success">Enregistrer</button>
+				</form>
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Courses management</title>
+
+</head>
+<body>
+
+	<div layout:fragment="content1">
+
+		<div class="card container d-flex justify-content-center rounded-5">
+
+
+			<div class="card-body">
+
+				<h1 class="card-title mb-5">Cours</h1>
+
+				<div class="">
+					<form class=" mb-3" th:action="@{/course-management}"
+						method="get">
+						<div class="row g-3 mb-3">
+							<div class="input-group col mr-3">
+								<input name="keyword" th:value="${keyword}"
+									class="form-control me-2" type="search"
+									placeholder="Mot clé" aria-label="Search">
+								<button class="btn btn-outline-success" type="submit">Search</button>
+							</div>
+
+						</div>
+
+					</form>
+				</div>
+
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titre</th>
+							<th>Description</th>
+							<th>Durée</th>
+							<th>N° de SALLE</th>
+							<th>Nom instructeur</th>
+
+
+
+							<th></th>
+							<th></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cs:${coursesList}">
+
+							<td th:text="${cs.id}"></td>
+							<td th:text="${cs.title}"></td>
+							<td th:text="${cs.description}"></td>
+							<td th:text="${cs.duration}"></td>
+							<td th:text="${cs.classRoom.number}"></td>
+							<td th:text="${cs.instructor.firstName}"></td>
+
+
+
+
+							<td sec:authorize="hasAuthority('ADMIN')"><a type="button"
+								class=""
+								th:href="@{/admin/update-course(id=${cs.id},page=${currentPage},keyword=${keyword})}"><span
+									class="material-symbols-outlined"> edit_note </span></a></td>
+
+							<td sec:authorize="hasAuthority('ADMIN')"><a
+								onclick="return confirm('Attention! toutes suppression est définitive \nEtes vous sûr?')"
+								type="button" class=""
+								th:href="@{/admin/deleteCR(id=${cs.id},page=${currentPage},keyword=${keyword})}"><span
+									class="material-symbols-outlined"> delete </span></a></td>
+
+						</tr>
+					</tbody>
+				</table>
+
+
+				<div>
+					<ul class="pagination">
+						<li class="page-item"><a class="page-link"
+							th:href="@{course-management(page=${previous}, size=${size}, keyword=${keyword})}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+
+						<li class="page-item'" th:each="pa,status:${pages}"
+							aria-current="page"><a th:class="page-link"
+							th:href="@{course-management(page=${status.index}, size=${size}, keyword=${keyword})}"
+							th:text="${status.index}+1"></a></li>
+
+						<li class="page-item"><a class="page-link"
+							th:href="@{course-management(page=${next}, size=${size}, keyword=${keyword})}"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

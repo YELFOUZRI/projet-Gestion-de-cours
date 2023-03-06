@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Create ClassRoom</title>
+
+
+</head>
+
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="card container d-flex justify-content-center">
+
+			<div class="card-body">
+				<h5 class="card-title mb-5">Création Salle de Cours</h5>
+
+				<form th:action="@{saveCR}" method="post">
+
+				
+					<div class="row g-3 mb-5">
+						<div class="col-sm-7">
+							<input type="text" class="form-control" placeholder="Numéro"
+								aria-label="number" name="number"
+								th:value="${classRoom.number}"> <span
+								class="text-danger" th:errors="${classRoom.number}"></span>
+						</div>
+						<div class="col-sm">
+							<input type="text" class="form-control" placeholder="Capacité"
+								aria-label="capacity" name="capacity" th:value="${classRoom.capacity}">
+							<span class="text-danger" th:errors="${classRoom.capacity}"></span>
+						</div>
+						<div class="col-sm">
+							<input type="text" class="form-control" placeholder="Code Etablissement"
+								aria-label="establishment" name="establishment"
+								th:value="${classRoom.establishment}"> <span
+								class="text-danger" th:errors="${classRoom.establishment}"></span>
+
+						</div>
+					</div>
+	
+					<button type="submit" class="btn btn-success">Enregistrer</button>
+				</form>
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>
