@@ -43,29 +43,46 @@ public abstract class User {
 	private String email;
 	@NotEmpty
 	private String password;
-	private String phoneNumber;
+	private String phoneNumber;	
+	private Boolean activ;
 	
 	public User() {
 		
 	}
 	
 	
-	public User(Long id, @NotEmpty @Size(max = 30) String firstName, @NotEmpty @Size(max = 30) String lastName,
-			LocalDate bDay, @NotEmpty String adress, @NotEmpty @Size(max = 5, min = 5) String postalCode,
-			@NotEmpty String city, @NotEmpty String email, @NotEmpty String password, String phoneNumber) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.bDay = bDay;
-		this.adress = adress;
-		this.postalCode = postalCode;
-		this.city = city;
-		this.email = email;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
+	
+		public User(Long id, @NotEmpty @Size(max = 30) String firstName, @NotEmpty @Size(max = 30) String lastName,
+		LocalDate bDay, @NotEmpty String adress, @NotEmpty @Size(max = 5, min = 5) String postalCode,
+		@NotEmpty String city, @NotEmpty String email, @NotEmpty String password, String phoneNumber, Boolean activ) {
+	super();
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.bDay = bDay;
+	this.adress = adress;
+	this.postalCode = postalCode;
+	this.city = city;
+	this.email = email;
+	this.password = password;
+	this.phoneNumber = phoneNumber;
+	this.activ = activ;
+}
+	
+
+
+
+	public Boolean getActiv() {
+		return activ;
 	}
 
+
+
+
+
+	public void setActiv(Boolean activ) {
+		this.activ = activ;
+	}
 
 
 	public Long getId() {

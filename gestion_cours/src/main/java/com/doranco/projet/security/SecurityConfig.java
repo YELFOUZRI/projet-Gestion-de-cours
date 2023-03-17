@@ -24,8 +24,11 @@ public class SecurityConfig {
 		
 	@Bean
 	UserDetailsService jdbcUserDetailsService() {
-	    String usersByUsernameQuery = "select email as principal, password as credentials, 'true' as enabled from users where email = ?";
-	    String authsByUserQuery = "select email as principal, type as role, true from users where email = ?";
+	    String usersByUsernameQuery = "select email as principal, password as credentials, activ from users where email = ?";
+	    String authsByUserQuery = "select email as principal, type as role from users where email = ?";
+	    
+//	    String usersByUsernameQuery = "select email as principal, password as credentials, 'true' as enabled from users where email = ?";
+//	    String authsByUserQuery = "select email as principal, type as role, true from users where email = ?";
 	      
 	    JdbcUserDetailsManager users = new JdbcUserDetailsManager();
 

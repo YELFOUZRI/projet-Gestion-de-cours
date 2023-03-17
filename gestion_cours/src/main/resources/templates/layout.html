@@ -122,8 +122,8 @@
 								<div class="offcanvas-body">
 									
 									<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/logout}">Déconnexion</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Mes documents</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Projet</a></li>
+									<li sec:authorize="hasAnyAuthority('STUDENT','INSTRUCTOR')" class="nav-item"><a class="nav-link" href="#">Mes documents</a></li>
+									<li sec:authorize="hasAnyAuthority('STUDENT','INSTRUCTOR')" class="nav-item"><a class="nav-link" href="#">Projet</a></li>
 								</div>
 							</div>
 

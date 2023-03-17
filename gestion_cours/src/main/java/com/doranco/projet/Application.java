@@ -16,9 +16,6 @@ import com.doranco.projet.repositories.IClassRoomRepository;
 import com.doranco.projet.repositories.IEstablishmentRepository;
 import com.doranco.projet.repositories.IInstructorRepository;
 
-
-
-
 @SpringBootApplication
 public class Application implements CommandLineRunner{ 
 	
@@ -45,7 +42,7 @@ public class Application implements CommandLineRunner{
 		String hashedPassword = passwordEncoder.encode("1234");
 
 		
-		ar.save(new Admin(null, "admin", "admin", null, "admin", "admin", "admin", "admin", hashedPassword, "admin"));
+		ar.save(new Admin(null, "admin", "admin", null, "admin", "admin", "admin", "admin", hashedPassword, "admin", true));
 		
 		 
 		Establishment estab1 = new Establishment(null, "DIDEROT1", "1 Rue Dombasle", "93100", "MONTREUIL", "COLLEGE", null, null, null);
@@ -61,9 +58,9 @@ public class Application implements CommandLineRunner{
 		crr.save(new ClassRoom(null, "003", "35", estab3 , null));
 			
 		
-		ir.save(new Instructor(null, "RAZOUI", "WALID", LocalDate.of(1988, 01, 01), "44 avenue de Clichy", "75018", "Paris", "walid@gmail.com", passwordEncoder.encode("1234"), "0000000000", "Mathématique", null, null, null, null, estab1)); 		
-		ir.save(new Instructor(null, "ALI", "Mohammed", LocalDate.of(1985, 01, 01), "5 Rue des ROCHES", "93100", "Montreuil", "mohammed@gmail.com", passwordEncoder.encode("1234"), "0000000000","Francais", null, null, null, null, estab2)); 
-		ir.save(new Instructor(null, "HAMDI", "Sonia", LocalDate.of(1992, 01, 01), "43 avenue de la République", "92120", "Montrouge", "sonia@gmail.com", passwordEncoder.encode("1234"), "0000000000","Anglais", null, null, null, null, estab3)); 
+		ir.save(new Instructor(null, "RAZOUI", "WALID", LocalDate.of(1988, 01, 01), "44 avenue de Clichy", "75018", "Paris", "walid@gmail.com", passwordEncoder.encode("1234"), "0000000000", true, "Mathématique", null, null, null, null, estab1)); 		
+		ir.save(new Instructor(null, "ALI", "Mohammed", LocalDate.of(1985, 01, 01), "5 Rue des ROCHES", "93100", "Montreuil", "mohammed@gmail.com", passwordEncoder.encode("1234"), "0000000000",true, "Francais", null, null, null, null, estab2)); 
+		ir.save(new Instructor(null, "HAMDI", "Sonia", LocalDate.of(1992, 01, 01), "43 avenue de la République", "92120", "Montrouge", "sonia@gmail.com", passwordEncoder.encode("1234"), "0000000000",true, "Anglais", null, null, null, null, estab3)); 
 		
 		
 	}

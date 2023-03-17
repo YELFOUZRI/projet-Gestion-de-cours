@@ -62,7 +62,8 @@ public class instructorController {
 			model.addAttribute("pages", new int[instructorsList.getTotalPages()]);
 			model.addAttribute("currentPage", page);
 			model.addAttribute("previous", previousP);
-			model.addAttribute("next", nextP);		
+			model.addAttribute("next", nextP);
+			model.addAttribute("instructor", new Instructor());
 			
 			return "/admin/instructorsManagement";
 		}

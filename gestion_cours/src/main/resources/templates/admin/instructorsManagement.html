@@ -56,6 +56,7 @@
 							<th>Numéro de téléphone</th>
 							<th></th>
 							<th></th>
+							
 
 						</tr>
 					</thead>
@@ -72,6 +73,8 @@
 							<td th:text="${i.city}"></td>
 							<td th:text="${i.postalCode}"></td>
 							<td th:text="${i.phoneNumber}"></td>
+							
+							
 
 							<td sec:authorize="hasAuthority('ADMIN')"><a class=""
 								th:href="@{/admin/update-instructor(id=${i.id},page=${currentPage},keyword=${keyword})}"><span

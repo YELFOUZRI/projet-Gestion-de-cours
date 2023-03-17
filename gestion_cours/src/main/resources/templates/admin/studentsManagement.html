@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Home</title>
 
 </head>
+
 <body>
 
 	<div layout:fragment="content1">
@@ -27,9 +25,8 @@
 					<form class=" mb-3" th:action="@{student-management}" method="get">
 						<div class="row g-3 mb-3">
 							<div class="input-group col mr-3">
-								<input name="keyword" th:value="${keyword}"
-									class="form-control me-2" type="search" placeholder="Mot clé"
-									aria-label="Search">
+								<input name="keyword" th:value="${keyword}" class="form-control me-2" type="search"
+									placeholder="Mot clé" aria-label="Search">
 								<button class="btn btn-outline-success" type="submit">Search</button>
 							</div>
 
@@ -53,6 +50,7 @@
 							<th>Numéro de téléphone</th>
 							<th></th>
 							<th></th>
+							
 
 						</tr>
 					</thead>
@@ -70,16 +68,17 @@
 							<td th:text="${s.postalCode}"></td>
 							<td th:text="${s.phoneNumber}"></td>
 
-							<td sec:authorize="hasAuthority('ADMIN')"><a type="button"
-								class=""
-								th:href="@{/admin/update-student(id=${s.id},page=${currentPage},keyword=${keyword})}"><span
-									class="material-symbols-outlined"> edit_note </span></a></td>
-									
+
+
+							<td sec:authorize="hasAuthority('ADMIN')"><a type="button" class=""
+									th:href="@{/admin/update-student(id=${s.id},page=${currentPage},keyword=${keyword})}"><span
+										class="material-symbols-outlined"> edit_note </span></a></td>
+
 							<td sec:authorize="hasAuthority('ADMIN')"><a
-								onclick="return confirm('Attention! toutes suppression est définitive \nEtes vous sûr?')"
-								type="button" class=""
-								th:href="@{/admin/deleteS(id=${s.id},page=${currentPage},keyword=${keyword})}"><span
-									class="material-symbols-outlined"> delete </span></a></td>
+									onclick="return confirm('Attention! toutes suppression est définitive \nEtes vous sûr?')"
+									type="button" class=""
+									th:href="@{/admin/deleteS(id=${s.id},page=${currentPage},keyword=${keyword})}"><span
+										class="material-symbols-outlined"> delete </span></a></td>
 
 						</tr>
 					</tbody>
@@ -89,19 +88,18 @@
 				<div>
 					<ul class="pagination">
 						<li class="page-item"><a class="page-link"
-							th:href="@{student-management(page=${previous}, size=${size}, keyword=${keyword})}"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						</a></li>
+								th:href="@{student-management(page=${previous}, size=${size}, keyword=${keyword})}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
 
-						<li class="page-item'" th:each="pa,status:${pages}"
-							aria-current="page"><a th:class="page-link"
-							th:href="@{student-management(page=${status.index}, size=${size}, keyword=${keyword})}"
-							th:text="${status.index}+1"></a></li>
+						<li class="page-item'" th:each="pa,status:${pages}" aria-current="page"><a th:class="page-link"
+								th:href="@{student-management(page=${status.index}, size=${size}, keyword=${keyword})}"
+								th:text="${status.index}+1"></a></li>
 
 						<li class="page-item"><a class="page-link"
-							th:href="@{student-management(page=${next}, size=${size}, keyword=${keyword})}"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a></li>
+								th:href="@{student-management(page=${next}, size=${size}, keyword=${keyword})}"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
 					</ul>
 				</div>
 			</div>
@@ -112,4 +110,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

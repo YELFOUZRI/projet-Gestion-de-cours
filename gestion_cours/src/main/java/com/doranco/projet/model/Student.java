@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -103,13 +104,12 @@ public class Student extends User{
 		this.establishment = establishment;
 	}
 
-
-
-	public Student(Long id, String firstName, String lastName, LocalDate bDay, String adress, String postalCode,
-			String city, String email, String password, String role, String phoneNumber, @NotEmpty String grade,
-			List<Course> courses, List<Notification> notifications, List<Document> documents, List<Message> messages,
-			Establishment establishment) {
-		super(id, firstName, lastName, bDay, adress, postalCode, city, email, password, role);
+	public Student(Long id, @NotEmpty @Size(max = 30) String firstName, @NotEmpty @Size(max = 30) String lastName,
+			LocalDate bDay, @NotEmpty String adress, @NotEmpty @Size(max = 5, min = 5) String postalCode,
+			@NotEmpty String city, @NotEmpty String email, @NotEmpty String password, String phoneNumber, Boolean activ,
+			@NotEmpty String grade, List<Course> courses, List<Notification> notifications, List<Document> documents,
+			List<Message> messages, Establishment establishment) {
+		super(id, firstName, lastName, bDay, adress, postalCode, city, email, password, phoneNumber, activ);
 		this.grade = grade;
 		this.courses = courses;
 		this.notifications = notifications;
@@ -117,6 +117,8 @@ public class Student extends User{
 		this.messages = messages;
 		this.establishment = establishment;
 	}
+
+
 	
 	
 
